@@ -1,0 +1,42 @@
+name = "allergies"
+main = "src/index.ts"
+compatibility_date = "2024-04-03"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = false
+logpush = true
+routes = ["allergies.dev/*"]
+
+kv_namespaces = [
+  { binding = "KVCACHE", id = "9c174a80519a410e94b9b3296154b3d2", preview_id = "9c174a80519a410e94b9b3296154b3d2" },
+]
+
+[placement]
+mode = "off"
+
+[triggers]
+crons = ["30 13 * * *"] # 8:30 AM CST
+
+[vars]
+NAME = "allergies"
+ENVIRONMENT = "production"
+AXIOM_DATASET = "workers"
+AXIOM_DATASET_OTEL = "workers-otel"
+
+# [secrets]
+# API_TOKEN: 1P-dp4r4
+# API_TOKEN_CF: 1P-dp4r4
+# CRESTVIEW_ALLERGIES_DISCORD_HOOK
+
+[[r2_buckets]]
+binding = 'R2'
+bucket_name = 'allergies'
+
+[ai]
+binding = "AI"
+
+[durable_objects]
+bindings = [{ name = "ALLERGYDO", class_name = "AllergyDO" }]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["AllergyDO"]

@@ -1,0 +1,24 @@
+name = "uuid-rocks-content"
+main = "src/index.ts"
+compatibility_date = "2024-04-03"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = false
+logpush = true
+routes = ["i.uuid.rocks/*", "dl.uuid.rocks/*", "sh.uuid.rocks/*"]
+
+[placement]
+mode = "smart"
+
+[vars]
+NAME = "uuid-rocks-content"
+ENVIRONMENT = "production"
+AXIOM_DATASET = "workers"
+AXIOM_DATASET_OTEL = "workers-otel"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "9c174a80519a410e94b9b3296154b3d2" # cache
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "uuid-rocks-content"
