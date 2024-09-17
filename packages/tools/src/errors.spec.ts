@@ -1,7 +1,6 @@
 import { Command, program } from '@commander-js/extra-typings'
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest'
 
-import { getConfig } from './config'
 import { cliError } from './errors'
 
 const exitErrors: Error[] = []
