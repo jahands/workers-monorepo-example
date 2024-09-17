@@ -10,7 +10,7 @@ export const parseChangesetCmd = new Command('parse-changeset')
 		const repoRoot = await getRepoRoot()
 		cd(repoRoot)
 		verbose && echo(chalk.blue(`Parsing changeset from ${path}`))
-		let changeset = await Bun.file(path).text()
+		let changeset = (await fs.readFile(path)).toString()
 		if (stripPackages) {
 			const lines = changeset.split('\n')
 			let start = 0
