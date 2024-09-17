@@ -46,12 +46,7 @@ module.exports = {
 				],
 				'import/resolver': {
 					typescript: {
-						project: [
-							'tsconfig.json',
-							'packages/*/tsconfig.json',
-							'apps/*/tsconfig.json',
-							'apps2/*/tsconfig.json',
-						],
+						project: ['tsconfig.json', 'packages/*/tsconfig.json', 'apps/*/tsconfig.json'],
 					},
 				},
 			},
@@ -69,12 +64,7 @@ module.exports = {
 						extensions: ['.ts', '.tsx'],
 					},
 					typescript: {
-						project: [
-							'tsconfig.json',
-							'packages/*/tsconfig.json',
-							'apps/*/tsconfig.json',
-							'apps2/*/tsconfig.json',
-						],
+						project: ['tsconfig.json', 'packages/*/tsconfig.json', 'apps/*/tsconfig.json'],
 						alwaysTryTypes: true,
 					},
 				},

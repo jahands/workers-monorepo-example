@@ -28,7 +28,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
 				type: 'list',
 				name: 'appsDir',
 				message: 'Workspace location?',
-				choices: ['apps', 'apps2', 'appscf'],
+				choices: ['apps'],
 			},
 			{
 				type: 'input',

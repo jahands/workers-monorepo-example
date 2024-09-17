@@ -1,7 +1,7 @@
 // This configuration only applies to the package manager root.
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-	ignorePatterns: ['apps/**', 'apps2/**', 'packages/**', 'bunapps/**'],
+	ignorePatterns: ['apps/**', 'packages/**'],
 	extends: ['@repo/eslint-config/workers.cjs'],
 	overrides: [
 		{
