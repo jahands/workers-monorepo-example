@@ -16,17 +16,13 @@ const fixtureDir = `${__dirname}/test/fixtures`
 
 describe('getMD5OfString()', () => {
 	it('returns the md5 of a string', async () => {
-		expect(await getMD5OfString('hello world!')).toMatchInlineSnapshot(
-			`"fc3ff98e8c6a0d3087d515c0473f8677"`
-		)
+		expect(await getMD5OfString('hello world!')).toMatchInlineSnapshot(`"fc3ff98e8c6a0d3087d515c0473f8677"`)
 	})
 })
 
 describe('getMD5OfDir()', () => {
 	it('returns the md5 of a directory', async () => {
-		expect(await getMD5OfDir(`${fixtureDir}/dir-of-files`)).toMatchInlineSnapshot(
-			`"02c5f376a7b5c559b26eadd5e1178806"`
-		)
+		expect(await getMD5OfDir(`${fixtureDir}/dir-of-files`)).toMatchInlineSnapshot(`"02c5f376a7b5c559b26eadd5e1178806"`)
 	})
 })
 
