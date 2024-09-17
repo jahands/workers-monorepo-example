@@ -2,7 +2,6 @@ import { Command } from '@commander-js/extra-typings'
 import { z } from 'zod'
 
 import { getConfig } from '../config'
-import { ConcurrencyLock } from '../lock'
 
 export const sentryCmd = new Command('sentry')
 	.description('Manage Sentry for releases')
@@ -20,19 +19,13 @@ sentryCmd
 		echo(chalk.blue(`Sentry project: ${project}`))
 		const cfg = await getConfig()
 		echo(chalk.blue(`Sentry version: ${cfg.version}`))
-		const lock = new ConcurrencyLock('sentry-commits', cfg)
-		try {
-			await lock.acquire()
-			$.verbose = true
-			await retry(
-				3,
-				'1s',
-				() =>
-					$`sentry-cli releases set-commits ${cfg.version} --auto --ignore-missing --org ${org} --project ${project}`
-			)
-		} finally {
-			await lock.release()
-		}
+		$.verbose = true
+		await retry(
+			3,
+			'1s',
+			() =>
+				$`sentry-cli releases set-commits ${cfg.version} --auto --ignore-missing --org ${org} --project ${project}`
+		)
 	})
 
 sentryCmd
@@ -44,19 +37,13 @@ sentryCmd
 		echo(chalk.blue(`Sentry project: ${project}`))
 		const cfg = await getConfig()
 		echo(chalk.blue(`Sentry version: ${cfg.version}`))
-		const lock = new ConcurrencyLock('sentry-sourcemaps', cfg)
-		try {
-			await lock.acquire()
-			$.verbose = true
-			await retry(
-				3,
-				'1s',
-				() =>
-					$`sentry-cli sourcemaps upload ./dist/ --strip-prefix './dist/../' --release ${cfg.version} --org ${org} --project ${project}`
-			)
-		} finally {
-			await lock.release()
-		}
+		$.verbose = true
+		await retry(
+			3,
+			'1s',
+			() =>
+				$`sentry-cli sourcemaps upload ./dist/ --strip-prefix './dist/../' --release ${cfg.version} --org ${org} --project ${project}`
+		)
 	})
 
 sentryCmd
@@ -68,16 +55,10 @@ sentryCmd
 		echo(chalk.blue(`Sentry project: ${project}`))
 		const cfg = await getConfig()
 		echo(chalk.blue(`Sentry version: ${cfg.version}`))
-		const lock = new ConcurrencyLock('sentry-finalize', cfg)
-		try {
-			await lock.acquire()
-			$.verbose = true
-			await retry(
-				3,
-				'1s',
-				() => $`sentry-cli releases finalize ${cfg.version} --org ${org} --project ${project}`
-			)
-		} finally {
-			await lock.release()
-		}
+		$.verbose = true
+		await retry(
+			3,
+			'1s',
+			() => $`sentry-cli releases finalize ${cfg.version} --org ${org} --project ${project}`
+		)
 	})

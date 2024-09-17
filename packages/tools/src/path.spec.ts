@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { cmdExists, getMD5OfDir, getMD5OfFile, getMD5OfString } from './pkg'
+import { cmdExists, getMD5OfDir, getMD5OfFile, getMD5OfString } from './path'
 
 describe('cmdExists', () => {
 	it('returns true if command exists', async () => {
@@ -12,7 +12,7 @@ describe('cmdExists', () => {
 	})
 })
 
-const fixtureDir = `${__dirname}/../../../src/test/fixtures`
+const fixtureDir = `${__dirname}/test/fixtures`
 
 describe('getMD5OfString()', () => {
 	it('returns the md5 of a string', async () => {

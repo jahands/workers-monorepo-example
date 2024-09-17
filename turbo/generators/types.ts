@@ -2,7 +2,7 @@ export interface Answers {
 	name: string
 	uploadSecrets: 'yes' | 'no'
 	useAuth: 'yes' | 'no'
-	appsDir: 'apps' | 'apps2' | 'appscf'
+	appsDir: 'apps'
 	turbo: Turbo
 }
 
